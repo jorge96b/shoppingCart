@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
   { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule) },
   { path: 'productos', loadChildren: () => import('./products/productos/productos.module').then(m => m.ProductosModule) },
-  { path: 'ofertas', loadChildren: () => import('./products/ofertas/ofertas.module').then(m => m.OfertasModule) }
+  { path: 'ofertas', loadChildren: () => import('./products/ofertas/ofertas.module').then(m => m.OfertasModule) },
+  { path: 'carrito', loadChildren: () => import('./carrito/carrito.module').then(m => m.CarritoModule) }
   ];
 
 @NgModule({

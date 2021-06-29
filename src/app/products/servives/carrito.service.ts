@@ -63,7 +63,7 @@ export class CarritoService{
   }
 
   getCarrito(){
-
+    return this.pedido;
   }
 
   addProducto(producto: Producto){
@@ -81,15 +81,29 @@ export class CarritoService{
         this.pedido.productos.push(add);
       }
       this.afs.collection('Clientes/'+this.uai+'/carrito/').doc(this.uai).set(this.pedido).then(() =>{
-        console.log('se añadio con exito');
       });
     }else{
       this.router.navigate(['/login']);
+      return
     }
   }
 
   removeProducto(producto: Producto){
-
+    if(this.uai.length){
+      let position = 0;
+      const item = this.pedido.productos.find((productoPedido:any, index:number) => {
+        position = index;
+        return(productoPedido.producto.sku==producto.sku)
+      })
+      if(item !== undefined){
+        item.cantidad --;
+        if(item.cantidad==0){
+          this.pedido.productos.splice(position,1);
+        }
+      }
+      this.afs.collection('Clientes/'+this.uai+'/carrito/').doc(this.uai).set(this.pedido).then(() =>{
+      });
+    }
   }
 
   realizarPedido(){
@@ -98,5 +112,29 @@ export class CarritoService{
 
   clearCarrito(){
     
+  }
+
+  getTotal():number{
+    let total=0;
+    this.pedido.productos.forEach((producto: ProductosPedidos) => {
+      total= (producto.cantidad * producto.producto.precio) + total;
+    });
+    return total;
+  }
+
+  getCantidad():number{
+    let cantidad=0;
+    this.pedido.productos.forEach((producto: ProductosPedidos) => {
+      cantidad=  producto.cantidad + cantidad;
+    });
+    return cantidad;
+  }
+
+  savePerido(){
+    this.pedido.id = this.afs.createId();
+    this.pedido.precioTotal=this.getTotal();
+    this.afs.collection('Clientes/'+this.uai+'/pedidos/').doc(this.pedido.id).set(this.pedido).then(() =>{
+      this.initCarrito();
+    });
   }
 }

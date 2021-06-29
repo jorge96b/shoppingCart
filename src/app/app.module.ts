@@ -15,6 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
