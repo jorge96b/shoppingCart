@@ -15,6 +15,6 @@
     <mat-card-actions>
         <mat-card-subtitle>{{ producto.precio }}</mat-card-subtitle>
         <input type="number" id="tentacles" name="tentacles">
-        <button mat-button>Añadir al carrito</button>
+        <button mat-button (click)="addCarrito(producto)">Añadir al carrito</button>
     </mat-card-actions>
 </mat-card>

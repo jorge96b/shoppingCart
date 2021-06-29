@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/firestore';
 import { first } from 'rxjs/operators'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService{
 
-  constructor(public afAuth: AngularFireAuth, private router:Router) {}
+  userData: any;
+
+  constructor(public afAuth: AngularFireAuth, private router:Router,private afs: AngularFirestore) {}
 
 
   async resetPassword(email: string): Promise<void> {
@@ -52,7 +49,15 @@ export class AuthService{
   }
 
   getCurrentUser(){
-    return this.afAuth.authState.pipe(first()).toPromise();
+    this.afAuth.authState.subscribe(user => {
+      this.userData = user;
+      console.log(this.userData.uid);
+      return this.userData;
+    })
+  }
+
+  getDataUser(id:string){
+    return this.afs.collection('Clientes').doc(id).valueChanges();
   }
 
 }

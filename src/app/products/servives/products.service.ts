@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
-import { Producto } from 'src/app/shared/models/producto.interface';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { CarritoService } from './carrito.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor(private readonly afs: AngularFirestore) { 
+  constructor(private readonly afs: AngularFirestore, private carritoService: CarritoService) { 
   }
 
   getProducts() {

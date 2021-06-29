@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/shared/models/producto.interface';
+import { Producto } from 'src/app/shared/models/models';
+import { CarritoService } from '../servives/carrito.service';
 import { ProductsService } from '../servives/products.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { ProductsService } from '../servives/products.service';
   styleUrls: ['./productos.component.scss']
 })
 export class ProductosComponent implements OnInit {
+  
 
   public productos : Producto[] = [];
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService, private carritoService: CarritoService) {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(
@@ -21,6 +23,11 @@ export class ProductosComponent implements OnInit {
         console.log(this.productos);
       }
     );
+  }
+
+  addCarrito(producto: Producto){
+    console.log(producto);
+    this.carritoService.addProducto(producto);
   }
 
 }
