@@ -1,1 +1,35 @@
-<p>register works!</p>
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <div class="card">
+      <div class="conten-card">
+        <h1>Registrate</h1>
+        <label>Ya tiene una cuenta?</label><a [routerLink]="['/register']">Inicia session aqui</a><br>
+        <div class="center">
+          <button class="social-button">Facebook</button><br>
+          <button class="social-button">Google</button><br>
+          <button class="social-button">Apple</button><br>
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="center">
+      <div class="conten-card">
+        <h1 class="title">Tambien te puedes registrar con tu correo</h1><br>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div>
+          <label class="label-input">Correo</label><br>
+          <input class="inputs" placeholder="Correo" formControlName="email" required>
+        </div>
+        <div>
+          <label class="label-input">Contraseña</label><br>
+          <input class="inputs" placeholder="* * * * * *"  type="password" formControlName="password">
+        </div>
+        <div>
+          <button class="buttom-submit" type="submit" mat-button color="primary">Registrarme</button>
+        </div>
+        </form>
+      </div>
+    </div> 
+  </mat-grid-tile>
+</mat-grid-list>

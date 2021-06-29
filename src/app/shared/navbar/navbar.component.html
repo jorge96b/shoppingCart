@@ -1,1 +1,35 @@
-<p>navbar works!</p>
+<mat-toolbar class="justify">
+  <div>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>store</mat-icon>
+    </button>
+    <span>shopping Cart</span>
+  </div>
+
+  <div class="buttons-menu">
+    <a class="menu" [routerLink]="['/']">Home</a>
+    <a class="menu">Productos</a>
+    <a class="menu">Ofertas</a>
+  </div>
+
+
+  <div *ngIf="user$ | async as user; else login">
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button class="button" color="accent" (click)="logout()">
+      Salir
+    </button>
+  </div>
+
+  <ng-template #login>
+    <div>
+      <button class="button" color="primary" [routerLink]="['/login']">
+        Ingresar
+      </button>
+      <button class="button" color="accent" [routerLink]="['/register']">
+        Registrarme
+      </button>
+    </div>
+  </ng-template>
+</mat-toolbar>
