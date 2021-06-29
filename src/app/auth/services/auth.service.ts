@@ -33,11 +33,31 @@ export class AuthService{
 
   async register(email: string, password: string){
     try {
-      await this.afAuth.createUserWithEmailAndPassword(email,password);
-      this.router.navigate(['/home']);
+      this.afAuth.createUserWithEmailAndPassword(email,password)
+      .then((result) => {
+        this.saveUser(result.user);
+        this.router.navigate(['/home']);
+      }).catch((error) => {
+        alert('Se presento un error intentalo nuevamente');
+      })
     } catch (error) {
       alert('Se presento un error intentalo nuevamente');
     }
+  }
+
+  saveUser(user:any){
+    console.log(user);
+    this.afAuth.authState.subscribe(user => {
+      if(user !== null){
+        const uai=user.uid;
+        const loginUser = {
+          email : user.email
+        }
+        this.afs.collection('Clientes').doc(uai).set(loginUser).then(() =>{
+
+        });
+      }
+    })
   }
 
   async logout(): Promise<void> {
