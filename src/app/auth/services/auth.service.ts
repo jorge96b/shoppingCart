@@ -3,7 +3,7 @@ import { first } from 'rxjs/operators'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import Swal from 'sweetalert2'
 @Injectable({ providedIn: 'root' })
 export class AuthService{
 
@@ -27,7 +27,7 @@ export class AuthService{
     .then((user) => {
       return user
     }).catch((error) => {
-      alert('Se presento un error intentalo nuevamente');
+      this.alert('Error!','Usuario o contraseña invalida intentalo nuevamente','error','Reintentar');
     })
   }
 
@@ -36,26 +36,24 @@ export class AuthService{
       this.afAuth.createUserWithEmailAndPassword(email,password)
       .then((result) => {
         this.saveUser(result.user);
-        this.router.navigate(['/home']);
+        this.alert('Gracias por registrarte!','Registro exitoso','success','Ingresar');
+        this.router.navigate(['/login']);
       }).catch((error) => {
-        alert('Se presento un error intentalo nuevamente');
+        this.alert('Error!','Datos de ingresos invalidos intentalo nuevamente','error','Reintentar');
       })
     } catch (error) {
-      alert('Se presento un error intentalo nuevamente');
+      this.alert('Error!','Datos de ingresos invalidos intentalo nuevament','error','Reintentar');
     }
   }
 
   saveUser(user:any){
-    console.log(user);
     this.afAuth.authState.subscribe(user => {
       if(user !== null){
         const uai=user.uid;
         const loginUser = {
           email : user.email
         }
-        this.afs.collection('Clientes').doc(uai).set(loginUser).then(() =>{
-
-        });
+        this.afs.collection('Clientes').doc(uai).set(loginUser).then(() =>{});
       }
     })
   }
@@ -78,6 +76,15 @@ export class AuthService{
 
   getDataUser(id:string){
     return this.afs.collection('Clientes').doc(id).valueChanges();
+  }
+
+  alert(title:string,text:string,icon:any,confie:string){
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonText: confie
+    })
   }
 
 }

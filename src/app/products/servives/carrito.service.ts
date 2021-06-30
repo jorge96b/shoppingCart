@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2'
 @Injectable({
   providedIn: 'root'
 })
@@ -81,6 +81,7 @@ export class CarritoService{
         this.pedido.productos.push(add);
       }
       this.afs.collection('Clientes/'+this.uai+'/carrito/').doc(this.uai).set(this.pedido).then(() =>{
+
       });
     }else{
       this.router.navigate(['/login']);
@@ -99,19 +100,13 @@ export class CarritoService{
         item.cantidad --;
         if(item.cantidad==0){
           this.pedido.productos.splice(position,1);
+          this.alert();
         }
       }
       this.afs.collection('Clientes/'+this.uai+'/carrito/').doc(this.uai).set(this.pedido).then(() =>{
+        
       });
     }
-  }
-
-  realizarPedido(){
-
-  }
-
-  clearCarrito(){
-    
   }
 
   getTotal():number{
@@ -131,10 +126,72 @@ export class CarritoService{
   }
 
   savePerido(){
+    this.alertPedido();
+  }
+
+  confirmarPedido(){
     this.pedido.id = this.afs.createId();
     this.pedido.precioTotal=this.getTotal();
     this.afs.collection('Clientes/'+this.uai+'/pedidos/').doc(this.pedido.id).set(this.pedido).then(() =>{
       this.initCarrito();
-    });
+    }); 
+  }
+
+  alertPedido(){
+    const swalWithBootstrapButtons = Swal.mixin({
+      buttonsStyling: true
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Confirma tu pedido',
+      text: "Revisa tus productos!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar pedido!',
+      cancelButtonText: 'No, cancelar!',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Su pedido a sido enviado!',
+          'Pronto sus prodcutos seran enviados.',
+          'success'
+        )
+        this.confirmarPedido();
+        console.log('deleted');
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Sigue comprando',
+          'Tu carrito esta esperando por mas productos :)',
+          'error'
+        )
+        console.log('cancel');
+      }
+    })
+  }
+
+  alert(){
+    Swal.fire({
+      title: 'Estas segudo?',
+      text: "Deseas eliminar el prodcuto",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Producto eliminado correctamente.',
+          'success'
+        )
+      }
+    })
   }
 }

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       const user = await this.authService.login(email,password);
       if(user){
         console.log(user);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/productos']);
       }
     }catch(error){
       console.log(error);
