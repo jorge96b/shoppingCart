@@ -1,102 +1,107 @@
-/*******************************
-* MODAL AS LEFT/RIGHT SIDEBAR
-* Add "left" or "right" in modal parent div, after class="modal".
-* Get free snippets on bootpen.com
-*******************************/
-.modal.left .modal-dialog,
-.modal.right .modal-dialog {
-    position: fixed;
-    margin: auto;
-    width: 320px;
-    height: 100%;
-    -webkit-transform: translate3d(0%, 0, 0);
-        -ms-transform: translate3d(0%, 0, 0);
-         -o-transform: translate3d(0%, 0, 0);
-            transform: translate3d(0%, 0, 0);
+.content{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
 }
 
-.modal.left .modal-content,
-.modal.right .modal-content {
-    height: 100%;
-    overflow-y: auto;
+.titulo{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0px;
+    .title{
+        text-align: center;
+        color: #484848;
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+.subtitulo{
+    font-size: 0.8rem;
 }
 
-.modal.left .modal-body,
-.modal.right .modal-body {
-    padding: 15px 15px 80px;
+.content-cards{
+    display: flex;
+    justify-content: center;
 }
 
-/*Left*/
-.modal.left.fade .modal-dialog{
-    left: -320px;
-    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-       -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
-         -o-transition: opacity 0.3s linear, left 0.3s ease-out;
-            transition: opacity 0.3s linear, left 0.3s ease-out;
+.cardBox{
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
-.modal.left.fade.in .modal-dialog{
-    left: 0;
-}
+.card{
+    width: 28%;
+    height: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
-/*Right*/
-.modal.right.fade .modal-dialog {
-    right: -320px;
-    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
-       -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-         -o-transition: opacity 0.3s linear, right 0.3s ease-out;
-            transition: opacity 0.3s linear, right 0.3s ease-out;
 }
 
-.modal.right.fade.in .modal-dialog {
-    right: 0;
+.card img{
+    width: 10rem;
 }
 
-/* ----- MODAL STYLE ----- */
-.modal-content {
-    border-radius: 0;
-    border: none;
+.card p{
+    text-align: justify;
 }
 
-.modal-header {
-    border-bottom-color: #EEEEEE;
-    background-color: #FAFAFA;
+.precio-cards{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ----- v CAN BE DELETED v ----- */
-body {
-background-color: #78909C;
+.input-send{
+    width: 85%;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.demo {
-padding-top: 60px;
-padding-bottom: 110px;
+.input-send input{
+    height: 1rem;
 }
 
-.btn-demo {
-margin: 15px;
-padding: 10px 15px;
-border-radius: 0;
-font-size: 16px;
-background-color: #FFFFFF;
+.input-send button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
-.btn-demo:focus {
-outline: 0;
+@media (max-width:1026px){
+    .input-send{
+        flex-direction: column;
+    }
+    
+    .input-send button{
+        margin-top: 1rem;
+    }
 }
 
-.demo-footer {
-position: fixed;
-bottom: 0;
-width: 100%;
-padding: 15px;
-background-color: #212121;
-text-align: center;
+@media (max-width:966px){
+    .cardBox{
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    
 }
 
-.demo-footer > a {
-text-decoration: none;
-font-weight: bold;
-font-size: 16px;
-color: #fff;
+.cart{
+    background-color: #52b9a5;
+    border-color: #52b9a5;
+    color: #fff;
 }

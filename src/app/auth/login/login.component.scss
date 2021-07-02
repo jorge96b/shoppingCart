@@ -9,6 +9,23 @@
   margin: 5px;
 }
 
+.titles-login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titles-login a{
+  text-decoration: none;
+  color: #0c72c6;
+  transition: all 300ms;
+}
+
+.titles-login a:hover{
+  text-decoration: underline;
+}
+
 .buttom-submit{
   text-decoration: none;
   border-radius: 8px;
@@ -22,6 +39,7 @@
   width: 80%;
   height: 50%;
   .conten-card{
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -54,4 +72,41 @@
   line-height: 33px;
   letter-spacing: 1px;
   margin: 10px 0 13px;
+}
+
+.img{
+  max-width: 59vh;
+  width: 50%;
+  min-width: 401px;
+}
+
+.span{
+  color: #707070;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.23;
+}
+
+.title{
+  color: #484848;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -2.16px;
+  margin-bottom: -2px;
+}
+
+
+.social-button{
+
+  text-decoration: none;
+  margin: 34px 34px 34px 0px !important;
+  width: 242px;
+  height: 49px;
+  border-radius: 26px;
+  background-color: #52b9a5;
+  border-color: #52b9a5;
+  padding: 0 20px;
+  color: #fff;
+  
 }

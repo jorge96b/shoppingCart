@@ -5,6 +5,7 @@ import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosComponent } from './productos.component';
 import { MatListModule } from '@angular/material/list';
 import  {MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import  {MatCardModule } from '@angular/material/card';
     CommonModule,
     ProductosRoutingModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ]
 })
 export class ProductosModule { }

@@ -1,5 +1,5 @@
-<mat-toolbar class="justify">
-  <div>
+<mat-toolbar class="header">
+  <div class="logo">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>store</mat-icon>
     </button>
@@ -17,17 +17,17 @@
     <button (click)="openDialog()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>shopping_cart</mat-icon>
     </button>
-    <button class="button" color="accent" (click)="logout()">
+    <button class="button registrar" color="accent" (click)="logout()">
       Salir
     </button>
   </div>
 
   <ng-template #login>
-    <div>
-      <button class="button" color="primary" [routerLink]="['/login']">
+    <div class="login">
+      <button class="button ingresar" color="primary" [routerLink]="['/login']">
         Ingresar
       </button>
-      <button class="button" color="accent" [routerLink]="['/register']">
+      <button class="button registrar" color="accent" [routerLink]="['/register']">
         Registrarme
       </button>
     </div>

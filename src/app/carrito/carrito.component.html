@@ -4,22 +4,33 @@
     <h3>Lista de productos</h3>
 
     <mat-list *ngFor="let producto of pedido.productos">
-        <mat-list-item>
-            <img src="{{ producto.producto.imagen }}" alt="Photo" style="width: 40px; height: 40px;">
-            {{producto.producto.nombre}} 
-            <button (click)="addProduct(producto.producto)">+</button>
-            <button (click)="removeProducto(producto.producto)">-</button>
-            <label>Cantidad {{producto.cantidad}}</label>
-            <label>Precio unidad {{producto.producto.precio}}</label>
+        <mat-list-item style="margin:16px 0px; height: 100px;width: 100%;">
+            <div class="listaProducto">
+                <div class="row">
+                    <div class="producto">
+                        <img src="{{ producto.producto.imagen }}" alt="Photo" style="width: 40px; height: 40px;">
+                        <label>{{producto.producto.nombre}} </label>
+                    </div>
+
+                    <div>
+                        <button class="button mas" (click)="addProduct(producto.producto)">+</button>
+                        <button class="button menos" (click)="removeProducto(producto.producto)">-</button>
+                    </div>
+                </div>
+
+                <div class="valor">
+                    <label>Cantidad {{producto.cantidad}}</label><br>
+                    <label>Precio unidad {{producto.producto.precio}}</label>
+                </div>
+            </div>
             </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
 
     </mat-dialog-content>
+    <footer class="footer">
+        <h3>Cantidad: {{cantidad}} </h3>
+        <h3>Total:  {{total}}</h3>
+        <button class="cart" (click)="realizarPedir()">Pedir</button>
+    </footer>
 </content>
-
-<footer>
-    <h3>Cantidad: {{cantidad}} </h3>
-    <h3>Total:  {{total}}</h3>
-    <button (click)="realizarPedir()">Pedir</button>
-</footer>

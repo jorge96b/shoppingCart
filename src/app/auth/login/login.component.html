@@ -1,23 +1,25 @@
 <mat-grid-list cols="2">
   <mat-grid-tile>
-    <img src="https://asiri.es/wp-content/uploads/2019/08/registra-tu-marca.png" alt="image">
+    <img src="https://tul.com.ec/assets/Img/mockupTul.png" alt="image" class="img">
   </mat-grid-tile>
   <mat-grid-tile>
     <div class="center">
       <div class="conten-card">
+        <div class="titles-login">
         <h1 class="title">Iniciar sesión con tu correo aqui</h1><br>
-        <h3>Aún no te has registrado</h3><a [routerLink]="['/register']">Registrate aquí</a><br>
+        <h3>Aún no te has registrado <a [routerLink]="['/register']">Registrate aquí</a></h3><br>
+      </div>
         <form [formGroup]="registerForm" (ngSubmit)="login()">
         <div>
-          <label class="label-input">Correo</label><br>
+          <span class="span"> Correo: </span><br>
           <input class="inputs" placeholder="Correo" formControlName="email" required>
         </div>
         <div>
-          <label class="label-input">Contraseña</label><br>
+          <span class="span"> Contraseña: </span><br>
           <input class="inputs" placeholder="* * * * * *"  type="password" formControlName="password">
         </div>
         <div>
-          <button class="buttom-submit" type="submit" mat-button color="primary">Ingresar</button>
+          <button class="social-button" type="submit" mat-button color="primary">Ingresar</button>
         </div>
         </form>
       </div>

@@ -81,7 +81,7 @@ export class CarritoService{
         this.pedido.productos.push(add);
       }
       this.afs.collection('Clientes/'+this.uai+'/carrito/').doc(this.uai).set(this.pedido).then(() =>{
-
+        this.alertProducto('Producto añadido','','success','Reintentar','top-end');
       });
     }else{
       this.router.navigate(['/login']);
@@ -192,6 +192,18 @@ export class CarritoService{
           'success'
         )
       }
+    })
+  }
+
+  alertProducto(title:string,text:string,icon:any,confie:string,position:any){
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      confirmButtonText: confie,
+      position: position,
+      showConfirmButton: false,
+      timer: 1500
     })
   }
 }

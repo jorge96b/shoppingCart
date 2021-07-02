@@ -1,12 +1,15 @@
 .social-button{
-  background-color: #3B5998;
-  width: 80%;
-  height: 40px;
-  color: white;
+
   text-decoration: none;
-  border-radius: 8px;
+  margin: 34px 34px 34px 0px !important;
+  width: 242px;
+  height: 49px;
+  border-radius: 26px;
+  background-color: #52b9a5;
+  border-color: #52b9a5;
   padding: 0 20px;
-  margin: 5px;
+  color: #fff;
+  
 }
 
 .buttom-submit{
@@ -38,13 +41,12 @@
 }
 
 .title{
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 100;
-  line-height: 33px;
-  letter-spacing: 1px;
-  margin: 10px 0 13px;
-  font-weight: bold;
+  color: #484848;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -2.16px;
+  margin-bottom: -2px;
 }
 
 .label-input{
@@ -53,5 +55,44 @@
   font-weight: 100;
   line-height: 33px;
   letter-spacing: 1px;
-  margin: 10px 0 13px;
+  margin: 16px 0 16px;
+}
+
+.social-button{
+  cursor: pointer;
+}
+
+.img-tiendas{
+  width: 158px;
+  margin-right: 5px;
+}
+
+.span{
+  color: #707070;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.23;
+}
+
+.text{
+  .text-title{
+    color: #484848;
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -2.16px;
+    margin-bottom: -2px;
+  }
+  .text-subtitle{
+    padding: 16px 0;
+    color: #000;
+    font-size: 54px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -4px;
+    width: 452px;
+    background: linear-gradient(217deg,#52b9a5 46%,#e8e237 83%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

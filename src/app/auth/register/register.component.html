@@ -1,15 +1,16 @@
 <mat-grid-list cols="2">
   <mat-grid-tile>
-    <div class="card">
-      <div class="conten-card">
-        <h1>Registrate</h1>
-        <label>Ya tiene una cuenta?</label><a [routerLink]="['/register']">Inicia session aqui</a><br>
-        <div class="center">
-          <button class="social-button">Facebook</button><br>
-          <button class="social-button">Google</button><br>
-          <button class="social-button">Apple</button><br>
-        </div>
-      </div>
+    <div class="card text">
+      <h2 class="text-title">Compra en línea</h2>
+      <h2 class="text-subtitle">Para tu negocio</h2>
+      <span class="span"> Rentabilidad, conveniencia y servicio a la medida para tu ferretería, obra o deposito. 🤩 </span><br>
+      <button class="social-button" type="submit" mat-button color="primary"> Accede a la aplicación web </button><br>
+      <span class="span"> Disponible gratis en: </span><br><br>
+      <span>
+        <img src="https://tul.com.ec/assets/icons/google-play-badge.png" alt="image" class="img-tiendas">
+        <img src="https://tul.com.ec/assets/icons/app-store-badge.png" alt="image" class="img-tiendas">
+        <img src="https://tul.com.ec/assets/icons/huawei-badge.png" alt="image" class="img-tiendas">
+      </span>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
@@ -18,15 +19,15 @@
         <h1 class="title">Tambien te puedes registrar con tu correo</h1><br>
         <form [formGroup]="registerForm" (ngSubmit)="register()">
         <div>
-          <label class="label-input">Correo</label><br>
+          <span class="span"> Correo: </span><br>
           <input class="inputs" placeholder="Correo" formControlName="email" required>
         </div>
         <div>
-          <label class="label-input">Contraseña</label><br>
+          <span class="span"> Contraseña: </span><br>
           <input class="inputs" placeholder="* * * * * *"  type="password" formControlName="password">
         </div>
         <div>
-          <button class="buttom-submit" type="submit" mat-button color="primary">Registrarme</button>
+          <button class="social-button" type="submit" mat-button color="primary">Registrarme</button>
         </div>
         </form>
       </div>
