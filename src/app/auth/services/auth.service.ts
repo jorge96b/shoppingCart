@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs/operators'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -69,7 +68,6 @@ export class AuthService{
   getCurrentUser(){
     this.afAuth.authState.subscribe(user => {
       this.userData = user;
-      console.log(this.userData.uid);
       return this.userData;
     })
   }

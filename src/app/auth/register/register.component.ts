@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    console.log(this.registerForm);
     const {email,password} = this.registerForm.value;
     try{
       this.authService.register(email,password);

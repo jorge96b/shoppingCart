@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CarritoService } from '../servives/carrito.service';
-import { Pedido, Producto, ProductosPedidos } from '../../shared/models/models';
+import { Pedido, Producto } from '../../shared/models/models';
 
 /**
  * @title Dialog with header, scrollable content and actions
@@ -16,15 +16,18 @@ export class CarritoComponent{
   pedido: Pedido;
   cantidad:number = 0;
   total: number = 0;
+  numProductos: number = 0;
 
   constructor(public dialog: MatDialog, public carritoService:CarritoService) {
     this.pedido=this.carritoService.getCarrito();
+    this.numProductos = this.pedido.productos.length;
     this.total= this.carritoService.getTotal();
     this.cantidad= this.carritoService.getCantidad();
   }
 
   actualizarDatos(){
     this.pedido=this.carritoService.getCarrito();
+    this.numProductos = this.pedido.productos.length;
     this.total= this.carritoService.getTotal();
     this.cantidad= this.carritoService.getCantidad();
   }

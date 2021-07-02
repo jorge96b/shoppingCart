@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 @Component({
@@ -24,12 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   async login(){
-    console.log(this.registerForm);
     const{email,password} = this.registerForm.value;
     try{
       const user = await this.authService.login(email,password);
       if(user){
-        console.log(user);
         this.router.navigate(['/productos']);
       }
     }catch(error){

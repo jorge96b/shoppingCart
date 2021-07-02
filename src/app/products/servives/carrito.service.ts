@@ -132,8 +132,14 @@ export class CarritoService{
   confirmarPedido(){
     this.pedido.id = this.afs.createId();
     this.pedido.precioTotal=this.getTotal();
+    this.pedido.estado='completado';
     this.afs.collection('Clientes/'+this.uai+'/pedidos/').doc(this.pedido.id).set(this.pedido).then(() =>{
-      this.initCarrito();
+      this.afs.collection('Clientes/'+this.uai+'/carrito/').doc(this.uai).delete().then(() => {
+        this.initCarrito();
+        console.log("Se elimino correctamente");
+      }).catch((error) => {
+          console.error("Error removing document: ", error);
+      });
     }); 
   }
 
@@ -160,7 +166,6 @@ export class CarritoService{
           'success'
         )
         this.confirmarPedido();
-        console.log('deleted');
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -170,7 +175,6 @@ export class CarritoService{
           'Tu carrito esta esperando por mas productos :)',
           'error'
         )
-        console.log('cancel');
       }
     })
   }

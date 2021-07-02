@@ -18,8 +18,6 @@ export class ProductosComponent implements OnInit {
     this.productsService.getProducts().subscribe(
       (prod:any) => {
         this.productos = prod;
-        console.log(prod);
-        console.log(this.productos);
       }
     );
   }
