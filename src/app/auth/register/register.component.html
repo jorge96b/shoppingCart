@@ -21,13 +21,18 @@
         <div>
           <span class="span"> Correo: </span><br>
           <input class="inputs" placeholder="Correo" formControlName="email" required>
+          <p class="danger" *ngIf="registerForm.controls['email'].errors?.required &&
+          registerForm.controls['email'].touched"> Este campo es requerido</p>
+          <p class="danger" *ngIf="registerForm.controls['email'].errors?.email">Ingresa un correo valido</p>
         </div>
         <div>
           <span class="span"> Contraseña: </span><br>
           <input class="inputs" placeholder="* * * * * *"  type="password" formControlName="password">
+          <p class="danger" *ngIf="registerForm.controls['password'].errors?.required &&
+          registerForm.controls['password'].touched"> Este campo es requerido</p>
         </div>
         <div>
-          <button class="social-button" type="submit" mat-button color="primary">Registrarme</button>
+          <button class="social-button" [disabled]="!registerForm.valid">Registrarme</button>
         </div>
         </form>
       </div>
