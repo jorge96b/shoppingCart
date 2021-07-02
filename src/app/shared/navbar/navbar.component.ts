@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { CarritoComponent } from 'src/app/carrito/carrito.component';
+import { CarritoComponent } from 'src/app/products/carrito/carrito.component';
 
 @Component({
   selector: 'app-navbar',

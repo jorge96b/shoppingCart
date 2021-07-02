@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CarritoService } from '../products/servives/carrito.service';
-import { Pedido, Producto, ProductosPedidos } from '../shared/models/models';
+import { CarritoService } from '../servives/carrito.service';
+import { Pedido, Producto, ProductosPedidos } from '../../shared/models/models';
 
 /**
  * @title Dialog with header, scrollable content and actions
